@@ -109,9 +109,9 @@ export async function GET() {
     }))
 
     // Summary stats
-    const totalChats = Object.values(chatsPerDay).reduce((sum: number, count: number) => sum + count, 0)
-    const totalDocuments = Object.values(documentsPerDay).reduce((sum: number, count: number) => sum + count, 0)
-    const totalApiCalls = Object.values(apiUsagePerDay).reduce((sum: number, count: number) => sum + count, 0)
+    const totalChats = (Object.values(chatsPerDay) as number[]).reduce((sum: number, count: number) => sum + count, 0)
+    const totalDocuments = (Object.values(documentsPerDay) as number[]).reduce((sum: number, count: number) => sum + count, 0)
+    const totalApiCalls = (Object.values(apiUsagePerDay) as number[]).reduce((sum: number, count: number) => sum + count, 0)
 
     return NextResponse.json({
       chats: {
