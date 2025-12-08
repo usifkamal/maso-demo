@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Test Page</title>
+    <script src="http://localhost:3000/embed.js?v=1.0.0" data-bot-id="demo-tenant-1" data-position="bottom-right" data-color="#4F46E5" data-button-text="💬"></script>
+<style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Test Page for Chat Widget</h1>
+        <p>This is a test page to verify the chat widget is working correctly.</p>
+        <p>Look for the chat button in the bottom-right corner (or wherever you configured it).</p>
+        <p>Click it to open the chat widget and test the functionality.</p>
+    </div>
+
+    <!-- Paste your embed code here, just before the closing </body> tag -->
+    <!-- NOTE: Remove the integrity attribute for local testing, or update it if it's invalid -->
+   
+    
+    <!-- Debug helper -->
+    <script>
+        // Check if widget loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const widget = document.getElementById('chat-widget-container');
+                if (widget) {
+                    console.log('✅ Widget loaded successfully!');
+                } else {
+                    console.error('❌ Widget not found. Check console for errors.');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

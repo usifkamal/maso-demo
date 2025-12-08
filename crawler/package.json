@@ -1,0 +1,53 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web crawler service for the White-Label AI Chatbot Platform",
+  "license": "MIT",
+  "author": "Mayooear",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint --ignore-path .gitignore \"**/*.+(ts|js|tsx)\"",
+    "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
+    "scrape-embed": "tsx -r dotenv/config scripts/scrape-embed.ts",
+    "clean": "rm -rf .next node_modules"
+  },
+  "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@supabase/supabase-js": "^2.38.4",
+    "cheerio": "1.0.0-rc.12",
+    "clsx": "^2.0.0",
+    "dotenv": "^16.0.3",
+    "langchain": "^0.0.208",
+    "next": "15.5.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.5",
+    "tailwind-merge": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "@typescript-eslint/parser": "^5.59.7",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.40.0",
+    "eslint-config-next": "15.5.6",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
+    "tsx": "^3.12.3",
+    "typescript": "^5.1.3"
+  },
+  "keywords": [
+    "starter",
+    "notion",
+    "typescript",
+    "nextjs",
+    "langchain",
+    "openai"
+  ]
+}

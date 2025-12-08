@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Widget Test Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+      color: #1f2937;
+    }
+    
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #4b5563;
+    }
+    
+    code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #dc2626;
+    }
+    
+    .test-section {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px solid #e5e7eb;
+    }
+    
+    .status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+    
+    .status.success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    
+    .status.info {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    
+    .instructions {
+      background: #f9fafb;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #6366f1;
+    }
+    
+    .instructions ol {
+      margin-left: 20px;
+    }
+    
+    .instructions li {
+      margin-bottom: 10px;
+    }
+    
+    .warning {
+      background: #fef3c7;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #f59e0b;
+    }
+    
+    .test-controls {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f9fafb;
+      border-radius: 8px;
+    }
+    
+    .test-controls button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .test-controls button:hover {
+      background: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 Chat Widget Test Page</h1>
+    <p>
+      This page demonstrates the embeddable chat widget. Look for a floating chat button 
+      in the bottom-right corner (or as configured).
+    </p>
+    
+    <div class="warning">
+      <strong>⚠️ Setup Required:</strong> Replace <code>YOUR_TENANT_ID</code> in the script tag below 
+      with your actual tenant ID from the dashboard.
+    </div>
+    
+    <div class="instructions">
+      <h3>📋 Testing Steps:</h3>
+      <ol>
+        <li>Get your Tenant ID from <code>/dashboard/widget</code> or <code>/dashboard/profile</code></li>
+        <li>Open browser DevTools (F12) to check for errors</li>
+        <li>Replace <code>YOUR_TENANT_ID</code> in the script tag below</li>
+        <li>Save and refresh this page</li>
+        <li>Click the chat button that appears</li>
+        <li>Test sending a message</li>
+        <li>Verify the widget closes on ESC key</li>
+        <li>Check Network tab for API calls</li>
+      </ol>
+    </div>
+    
+    <div class="test-section">
+      <h2>Test Controls</h2>
+      <div class="test-controls">
+        <button onclick="checkWidgetLoaded()">Check Widget Status</button>
+        <button onclick="toggleWidgetManually()">Toggle Widget (Programmatic)</button>
+        <button onclick="showWidgetInfo()">Show Widget Info</button>
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>Current Configuration</h2>
+      <p>Script Source: <code id="script-src">Loading...</code></p>
+      <p>Bot ID: <code id="bot-id">Not set - Please replace YOUR_TENANT_ID_HERE in script tag</code></p>
+      <p>Expected Position: <code>bottom-right</code></p>
+      <p>Widget Status: <span id="widget-status" class="status info">Not checked</span></p>
+      <div class="warning" style="margin-top: 15px;">
+        <strong>⚠️ Setup Required:</strong> The script tag above has <code>data-bot-id="YOUR_TENANT_ID_HERE"</code>. 
+        You must replace this with your actual tenant ID (UUID format) from the dashboard.
+      </div>
+    </div>
+    
+    <div class="test-section">
+      <h2>Checklist</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check1"> Widget button appears on page load
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check2"> Button opens chat iframe on click
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check3"> Chat loads and shows greeting message
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check4"> Can send messages and receive responses
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check5"> ESC key closes the widget
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check6"> Close button (✕) works
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check7"> Widget respects custom colors from settings
+        </li>
+        <li style="margin-bottom: 10px;">
+          <input type="checkbox" id="check8"> No console errors in DevTools
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 
+    ============================================
+    EMBED WIDGET SCRIPT
+    ============================================
+    Replace YOUR_TENANT_ID with your actual tenant ID
+    Get it from: http://localhost:3000/dashboard/widget
+  -->
+  <!-- 
+    ============================================
+    EMBED WIDGET SCRIPT
+    ============================================
+    ⚠️ IMPORTANT: Replace YOUR_TENANT_ID_HERE with your actual tenant ID
+    Get it from: http://localhost:3000/dashboard/widget or /dashboard/profile
+    
+    Quick steps:
+    1. Open http://localhost:3000/dashboard/widget
+    2. Copy the tenant ID from the embed code preview
+    3. Replace YOUR_TENANT_ID_HERE below with that ID
+  -->
+  <script 
+    src="http://localhost:3000/embed.js?v=1.0.0" 
+    data-bot-id="f8aa1a1a-436c-4faf-8807-2f341d16b38d"
+    data-position="bottom-right"
+    data-color="#4F46E5"
+    data-button-text="💬"
+  ></script>
+
+  <!-- Test Helper Scripts -->
+  <script>
+    // Update script info on load
+    window.addEventListener('load', function() {
+      const script = document.querySelector('script[data-bot-id]');
+      if (script) {
+        document.getElementById('script-src').textContent = script.src;
+        const botId = script.getAttribute('data-bot-id') || 'NOT SET';
+        const isValidUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(botId);
+        document.getElementById('bot-id').textContent = botId;
+        if (!isValidUuid && botId !== 'NOT SET') {
+          document.getElementById('bot-id').innerHTML = 
+            '<span style="color: #dc2626;">❌ Invalid UUID: ' + botId + '</span><br>' +
+            '<small style="color: #6b7280;">Please replace with a valid tenant ID from /dashboard/widget</small>';
+        }
+      }
+    });
+
+    function checkWidgetLoaded() {
+      const widget = document.getElementById('chat-widget-container');
+      const button = document.getElementById('chat-widget-toggle');
+      const statusEl = document.getElementById('widget-status');
+      
+      if (widget && button) {
+        statusEl.textContent = '✅ Loaded';
+        statusEl.className = 'status success';
+        console.log('✅ Widget loaded successfully');
+        console.log('Widget container:', widget);
+        console.log('Toggle button:', button);
+      } else {
+        statusEl.textContent = '❌ Not found';
+        statusEl.className = 'status';
+        console.error('❌ Widget not found');
+        console.log('Check that YOUR_TENANT_ID is replaced with actual tenant ID');
+      }
+    }
+
+    function toggleWidgetManually() {
+      const button = document.getElementById('chat-widget-toggle');
+      if (button) {
+        button.click();
+        console.log('Widget toggled programmatically');
+      } else {
+        alert('Widget not loaded. Check tenant ID and console for errors.');
+      }
+    }
+
+    function showWidgetInfo() {
+      const widget = document.getElementById('chat-widget-container');
+      const button = document.getElementById('chat-widget-toggle');
+      const iframe = document.getElementById('chat-widget-iframe');
+      
+      const info = {
+        widgetExists: !!widget,
+        buttonExists: !!button,
+        iframeExists: !!iframe,
+        iframeLoaded: iframe ? !!iframe.src : false,
+        widgetVersion: widget ? widget.getAttribute('data-widget-version') : null,
+        buttonText: button ? button.textContent : null,
+        buttonColor: button ? window.getComputedStyle(button).backgroundColor : null,
+      };
+      
+      console.log('Widget Info:', info);
+      alert('Check console for widget information');
+    }
+
+    // Auto-check on load
+    setTimeout(checkWidgetLoaded, 2000);
+  </script>
+</body>
+</html>
