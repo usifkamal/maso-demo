@@ -189,7 +189,7 @@ ${lastMessage}`
       // Save chat to database
       const title = messages[0].content.substring(0, 100)
       const id = json.id ?? nanoid()
-      const createdAt = Date.now()
+      const createdAt = new Date()
       const path = `/chat/${id}`
       const payload = {
         id,
@@ -244,7 +244,7 @@ ${lastMessage}`
             // Save chat to database after streaming is complete
             const title = messages[0].content.substring(0, 100)
             const id = json.id ?? nanoid()
-            const createdAt = Date.now()
+            const createdAt = new Date()
             const path = `/chat/${id}`
             const payload = {
               id,
