@@ -30,7 +30,7 @@ export function DemoBanner() {
     <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-gray-900/80 border-b border-gray-800/50 px-4 py-2.5 text-center text-sm font-medium shadow-lg">
       <div className="flex items-center justify-center gap-2 text-gray-200">
         <span>🔒</span>
-        <span>You're in Demo Mode — No real data is stored.</span>
+        <span>You&apos;re in Demo Mode — No real data is stored.</span>
       </div>
     </div>
   )

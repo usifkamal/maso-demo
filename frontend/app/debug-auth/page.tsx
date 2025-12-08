@@ -187,7 +187,7 @@ export default function DebugAuthPage() {
             Check Browser Console
           </h2>
           <p className="text-sm text-muted-foreground">
-            Open your browser's Developer Tools (F12) and check the Console tab for detailed logs
+            Open your browser&apos;s Developer Tools (F12) and check the Console tab for detailed logs
             about session state and authentication.
           </p>
         </div>
