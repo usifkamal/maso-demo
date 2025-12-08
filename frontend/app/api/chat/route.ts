@@ -104,7 +104,7 @@ export async function POST(req: Request) {
 
   const cookieStore = await cookies()
   const supabase = createRouteHandlerClient<Database>({
-    cookies: () => cookieStore
+    cookies
   })
   const json = await req.json()
   const { messages } = json
