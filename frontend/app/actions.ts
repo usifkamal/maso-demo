@@ -130,9 +130,9 @@ export async function shareChat(chat: Chat) {
   const supabase = createServerActionClient<Database>({
     cookies
   })
-  await supabase
+  await (supabase
     .from('chats')
-    .update({ payload: payload as any })
+    .update({ payload: payload as any }) as any)
     .eq('id', chat.id)
     .throwOnError()
 
