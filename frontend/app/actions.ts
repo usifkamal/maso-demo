@@ -20,8 +20,9 @@ export async function getChats(userId?: string | null) {
     return []
   }
   try {
+    const cookieStore = await cookies()
     const supabase = createServerActionClient<Database>({
-      cookies
+      cookies: () => cookieStore
     })
     const { data } = await supabase
       .from('chats')
@@ -43,8 +44,9 @@ export async function getChat(id: string) {
     return (mockChat as Chat) ?? null
   }
 
+  const cookieStore = await cookies()
   const supabase = createServerActionClient<Database>({
-    cookies
+    cookies: () => cookieStore
   })
   const { data } = await supabase
     .from('chats')
@@ -63,8 +65,9 @@ export async function removeChat({ id, path }: { id: string; path: string }) {
   }
 
   try {
+    const cookieStore = await cookies()
     const supabase = createServerActionClient<Database>({
-      cookies
+      cookies: () => cookieStore
     })
     await supabase.from('chats').delete().eq('id', id).throwOnError()
 
@@ -85,8 +88,9 @@ export async function clearChats() {
   }
 
   try {
+    const cookieStore = await cookies()
     const supabase = createServerActionClient<Database>({
-      cookies
+      cookies: () => cookieStore
     })
     await supabase.from('chats').delete().throwOnError()
     revalidatePath('/')
@@ -100,8 +104,9 @@ export async function clearChats() {
 }
 
 export async function getSharedChat(id: string) {
+  const cookieStore = await cookies()
   const supabase = createServerActionClient<Database>({
-    cookies
+    cookies: () => cookieStore
   })
   const { data } = await supabase
     .from('chats')
@@ -127,8 +132,9 @@ export async function shareChat(chat: Chat) {
     sharePath: `/share/${chat.id}`
   }
 
+  const cookieStore = await cookies()
   const supabase = createServerActionClient<Database>({
-    cookies
+    cookies: () => cookieStore
   })
   await supabase
     .from('chats')
