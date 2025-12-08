@@ -35,7 +35,7 @@ async function searchDocuments(query: string, apiKey: string): Promise<string> {
     )
     
     console.log('  🔎 Searching database for similar documents...')
-    const { data: sections, error } = await supabase.rpc('match_document_sections', {
+    const { data: sections, error } = await (supabase as any).rpc('match_document_sections', {
       query_embedding: queryEmbedding,
       match_threshold: 0.5,
       match_count: 5
