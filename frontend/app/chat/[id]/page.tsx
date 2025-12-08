@@ -10,14 +10,15 @@ export const runtime = 'edge'
 export const preferredRegion = 'home'
 
 export interface ChatPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateMetadata({
   params
 }: ChatPageProps): Promise<Metadata> {
+  const { id } = await params
   const cookieStore = await cookies()
   const session = await auth({ cookieStore })
 
@@ -25,21 +26,22 @@ export async function generateMetadata({
     return {}
   }
 
-  const chat = await getChat(params.id)
+  const chat = await getChat(id)
   return {
     title: chat?.title.toString().slice(0, 50) ?? 'Chat'
   }
 }
 
 export default async function ChatPage({ params }: ChatPageProps) {
+  const { id } = await params
   const cookieStore = await cookies()
   const session = await auth({ cookieStore })
 
   if (!session?.user) {
-    redirect(`/sign-in?next=/chat/${params.id}`)
+    redirect(`/sign-in?next=/chat/${id}`)
   }
 
-  const chat = await getChat(params.id)
+  const chat = await getChat(id)
 
   if (!chat) {
     notFound()
