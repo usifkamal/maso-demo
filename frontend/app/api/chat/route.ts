@@ -207,7 +207,7 @@ ${lastMessage}`
       }
       
       console.log('💾 Saving RAG chat to database...')
-      await supabase.from('chats').upsert({ id, user_id: userId, payload }).throwOnError()
+      await (supabase as any).from('chats').upsert({ id, user_id: userId, payload }).throwOnError()
       console.log('✅ RAG chat saved!')
       
       // Return the response as a simple text response
@@ -262,7 +262,7 @@ ${lastMessage}`
             }
             
             console.log('💾 Saving streaming chat to database...')
-            await supabase.from('chats').upsert({ id, user_id: userId, payload }).throwOnError()
+            await (supabase as any).from('chats').upsert({ id, user_id: userId, payload }).throwOnError()
             console.log('✅ Streaming chat saved!')
           } catch (error) {
             console.error('❌ Stream error:', error)
