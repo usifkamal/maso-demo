@@ -16,6 +16,7 @@ export interface MockChat {
   id: string
   title: string
   createdAt: number
+  userId: string
   path: string
   messages: Array<{
     role: 'user' | 'assistant'
@@ -57,6 +58,7 @@ export const MOCK_CHATS: MockChat[] = [
     id: 'demo-chat-1',
     title: 'Getting started with the platform',
     createdAt: Date.now() - 86400000, // 1 day ago
+    userId: 'demo-user',
     path: '/chat/demo-chat-1',
     messages: [
       {
@@ -81,6 +83,7 @@ export const MOCK_CHATS: MockChat[] = [
     id: 'demo-chat-2',
     title: 'Questions about features',
     createdAt: Date.now() - 3600000, // 1 hour ago
+    userId: 'demo-user',
     path: '/chat/demo-chat-2',
     messages: [
       {
