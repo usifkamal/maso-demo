@@ -534,6 +534,57 @@ function IconStar({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
+function IconUpload({ className, ...props }: React.ComponentProps<'svg'>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn('h-4 w-4', className)}
+      {...props}
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="17 8 12 3 7 8" />
+      <line x1="12" y1="3" x2="12" y2="15" />
+    </svg>
+  )
+}
+
+function IconPalette({ className, ...props }: React.ComponentProps<'svg'>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn('h-4 w-4', className)}
+      {...props}
+    >
+      <circle cx="13" cy="13" r="8" />
+      <path d="M5.12 6.81A9 9 0 1 0 20.6 19.3" />
+      <circle cx="8" cy="5" r="1.5" />
+      <circle cx="12" cy="2" r="1.5" />
+      <circle cx="16" cy="5" r="1.5" />
+      <circle cx="18" cy="9" r="1.5" />
+    </svg>
+  )
+}
+
+function IconMenu({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  )
+}
+
 export {
   IconEdit,
   IconNextChat,
@@ -565,5 +616,8 @@ export {
   IconChevronUpDown,
   IconSend,
   IconCode,
-  IconStar
+  IconStar,
+  IconUpload,
+  IconPalette,
+  IconMenu
 }
