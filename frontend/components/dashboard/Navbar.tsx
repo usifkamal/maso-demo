@@ -1,6 +1,6 @@
 'use client'
 
-import { IconUser } from '@/components/ui/icons'
+import { IconMenu, IconUser } from '@/components/ui/icons'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
