@@ -584,7 +584,7 @@ function IconMenu({ className, ...props }: React.ComponentProps<'svg'>) {
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
