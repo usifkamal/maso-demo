@@ -577,7 +577,7 @@ function IconPalette({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
-export function IconMenu({ className, ...props }: React.ComponentProps<'svg'>) {
+function IconMenu({ className, ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -625,5 +625,6 @@ export {
   IconCode,
   IconStar,
   IconUpload,
-  IconPalette
+  IconPalette,
+  IconMenu
 }
