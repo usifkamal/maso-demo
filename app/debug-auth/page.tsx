@@ -75,7 +75,7 @@ export default function DebugAuthPage() {
           ) : session ? (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-green-500" />
+                <div className="size-3 rounded-full bg-green-500" />
                 <span className="font-medium text-green-500">Session Active</span>
               </div>
               <div className="mt-4 space-y-1 text-sm">
@@ -88,7 +88,7 @@ export default function DebugAuthPage() {
           ) : (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-red-500" />
+                <div className="size-3 rounded-full bg-red-500" />
                 <span className="font-medium text-red-500">No Active Session</span>
               </div>
             </div>

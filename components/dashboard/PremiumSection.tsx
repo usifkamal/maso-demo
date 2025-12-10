@@ -113,7 +113,7 @@ export function PremiumSection() {
           <h2 className="text-xl font-semibold text-gray-100">Subscription Plan</h2>
           {isPremium && (
             <span className="px-2 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-300 border border-yellow-500/30 flex items-center gap-1">
-              <IconStar className="h-3 w-3" />
+              <IconStar className="size-3" />
               Premium
             </span>
           )}
