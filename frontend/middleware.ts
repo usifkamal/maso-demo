@@ -18,10 +18,7 @@ export async function middleware(req: NextRequest) {
     // Create a Supabase client configured to use cookies
     const supabase = createMiddlewareClient<Database>({ 
       req, 
-      res,
-      // Pass env vars directly to ensure they're available in Edge runtime
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-      supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      res
     })
 
     // Refresh session if expired - required for Server Components
