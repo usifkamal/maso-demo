@@ -11,7 +11,7 @@ export async function createServerSupabaseClient() {
 
 export async function getServerSession() {
   const supabase = await createServerSupabaseClient()
-  return getSessionSafely(supabase as SupabaseClient<Database>, 'Server session check')
+  return getSessionSafely(supabase, 'Server session check')
 }
 
 export async function getUser() {
