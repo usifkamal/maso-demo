@@ -171,6 +171,3 @@ export function createDefaultChatbotAPI(apiKey?: string): ChatbotAPI {
   }
   return new ChatbotAPI(defaultConfig.baseUrl, key)
 }
-
-// Export types for external use
-export type { IngestResponse, IngestError }
